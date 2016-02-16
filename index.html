@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="devMtIn">
 
 <head>
-  <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,700,600' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700,600" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/styles3.css">
 	<meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>DevMtin</title>
 </head>
 
-<body>
+<body ng-controller="homeCtrl">
 	<div class="l-header">
-		<h1>Your Name</h1>
+		<h1>{{myProfile.name}}</h1>
 	</div>
-  
-  <div class="wrapper">  
+
+  <div class="wrapper">
     <div>
       <h2>Profile</h2>
       <button class="l-btn l-btn-main">Editing :</button>
     </div>
 
-    <div>      
+    <div>
 
       <input id="name" type="text" placeholder="Your Name">
       <br />
@@ -39,7 +39,7 @@
     <h2>Friends</h2>
 
     <button class="l-btn l-btn-main">Go</button>
-    <input type="text" placeholder="Find Friends">    
+    <input type="text" placeholder="Find Friends">
     <div class="friendList">
       <span class="closeBtn"></span>
         My Friends
@@ -49,7 +49,7 @@
       </div>
     </div>
   </div>
-  
+
 	<div id="myModalMask">
 		<div id="myModal">
 			<div>
@@ -64,7 +64,12 @@
 			</div>
 		</div>
 	</div>
-  
+
 </body>
+<script src="angular.min.js"></script>
+<script src="app.js"></script>
+<script src="homeCtrl.js"></script>
+
+
 
 </html>
