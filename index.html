@@ -11,7 +11,7 @@
 
 <body ng-controller="homeCtrl">
 	<div class="l-header">
-		<h1>{{myProfile.name}}</h1>
+		<h1>{{myProfile.name || 'Your Name'}}</h1>
 	</div>
 
   <div class="wrapper">
@@ -22,7 +22,7 @@
 
     <div>
 
-      <input id="name" type="text" placeholder="Your Name">
+      <input id="name" type="text" placeholder="Your Name" ng-model="myProfile.name">
       <br />
 
       <input id="likes" type="text" placeholder="Likes">
@@ -39,8 +39,10 @@
     <h2>Friends</h2>
 
     <button class="l-btn l-btn-main">Go</button>
-    <input type="text" placeholder="Find Friends">
-    <div class="friendList">
+    <select ng-model="sortReverse" ng-options="option.value as option.display for option in sortOptions"></select>
+
+    <input type="text" placeholder="Find Friends" ng-model="findFriend.name">
+    <div class="friendList" ng-repeat="friend in myProfile.friends | filter: findFriend.name | orderBy : 'name' : sortReverse">
       <span class="closeBtn"></span>
         My Friends
       <br />
@@ -58,8 +60,8 @@
 					Add Friends
 				</div>
 					<br />
-				<div class="friendList">
-					<span class="friend"></span> Potential Friends
+				<div class="friendList" ng-repeat="friend in myProfile.friends">
+					<span class="friend"></span> {{friend.name}}
 				</div>
 			</div>
 		</div>
