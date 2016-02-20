@@ -325,7 +325,7 @@ Inside this function we need to declare an `index` variable and set it equal to 
 We will be making use of a closure to process our friends list, so we are going to declare a new function inside of the `findFriendsFriends` named `getNextFriend`. In this `getNextFriend` function we first need to check whether or not our profile has a friend at the current index. So far our function should look something like this:
 ```javascript
 this.findFriendsFriends = function(profile) {
-  var index = 0; // Create an index that we will use to track friends.
+  var index = 0; // Creat e an index that we will use to track friends.
   var deferred = $q.defer(); // Create a promise and assign it to the variable deferred
 
   function getNextFriend() { // Declare a closure function.

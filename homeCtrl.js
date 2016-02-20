@@ -1,5 +1,5 @@
 angular.module('devMtIn')
-.controller('homeCtrl', function($scope, profileService) {
+.controller('homeCtrl', function($scope, profileService, friendService) {
 	$scope.editing = false;
 
 	$scope.saveProfile = function( profile ) {
@@ -24,6 +24,8 @@ angular.module('devMtIn')
 			profileService.checkForProfile(profileId.profileId)
 			.then(function(profile){
 				$scope.myProfile = profile.data;
+				friendService.findFriendsFriends(profile.data);
+
 			})
 			.catch(function(err){
 				console.error(err);
@@ -39,4 +41,22 @@ angular.module('devMtIn')
        value: true
 	}
 	];
+	$scope.findFriends = function(query){
+		friendService.findFriends($scope.myProfile._id, query ).then(function(potentialFriends){
+			$scope.potentialFriends = potentialFriends;
+	});
+
+}
+	$scope.addFriend = function(friendId){
+		friendService.addFriend($scope.myProfile._id, friendId).then(function(profile){
+			$scope.checkForProfile();
+		});
+	}
+	$scope.removeFriend = function(friendId){
+		friendService.removeFriend($scope.myProfile._id, friendId).then(function(profile){
+			$scope.checkForProfile;
+		});
+	}
+
+
 });
